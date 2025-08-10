@@ -65,3 +65,13 @@ window.addEventListener('resize', function() {
     }
   }
 });
+
+
+ function downloadPDF() {
+      const link = document.createElement('a');
+      link.href = 'assests/Resume.pdf'; 
+      link.download = 'Tanzeela_Fatima.pdf'; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
