@@ -234,33 +234,6 @@ body{
     z-index: 1; 
 }
 
-
-.image-container::before {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #ff66c4;
-    border-radius: 50%;
-    left: 80px;
-    top: 40%;
-    transform: translateY(-50%);
-    z-index: 0;
-}
-
-.image-container::after {
-    content: "";
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    background: #6a5acd;
-    border-radius: 50%;
-    right: 140px;
-    top: 40%;
-    transform: translateY(-50%);
-    z-index: 0;
-}
-
 @media (max-width: 768px) {
     .hero {
         text-align: center;
