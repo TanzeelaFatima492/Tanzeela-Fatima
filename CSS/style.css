@@ -229,9 +229,10 @@ body{
 
 .profile-img {
     width: 70%;
+  height:60%;
     border-radius: 10px;
     position: relative;
-    margin-left: 300px;
+    margin-left: 200px;
 }
 
 @media (max-width: 768px) {
