@@ -228,6 +228,8 @@ body{
 }
 
 .profile-img {
+  width:120%;
+    height:100%;
     border-radius: 10px;
     position: relative;
     padding-left:150px
@@ -246,12 +248,6 @@ body{
         font-size: 20px;
     }
 
-    .image-container::before,
-    .image-container::after {
-        width: 100px;
-        height: 100px;
-    }
-
     .social-icons {
         display: flex;
         justify-content: center;
@@ -260,7 +256,6 @@ body{
 
 .profile-img:hover {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0px 10px 20px rgba(0, 200, 124, 0.5);
 
 }
 
