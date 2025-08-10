@@ -232,7 +232,7 @@ body{
   height:100%;
     border-radius: 10px;
     position: relative;
-  margin-left:-200px
+  padding-left:200px
 }
 
 @media (max-width: 768px) {
