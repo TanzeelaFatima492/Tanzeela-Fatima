@@ -280,3 +280,50 @@ body{
     @keyframes blink {
       50% { border-color: transparent; }
     }
+
+
+.about-section {
+    background-color: #0a0a24;
+    padding: 50px 0;
+    color: white;
+}
+
+.about-image {
+    position: relative;
+    display: inline-block;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+    z-index: 1;
+}
+
+.gradient-bg {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    background: linear-gradient(90deg, #ff007f, #6a5acd);
+    border-radius: 30px;
+    top: 30%;
+    left: -20%;
+    z-index: 0;
+}
+
+.about-title {
+    color: #e91e63;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.highlight {
+    color: #ff007f;
+    font-weight: bold;
+}
