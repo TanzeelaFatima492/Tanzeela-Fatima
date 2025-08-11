@@ -75,3 +75,38 @@ window.addEventListener('resize', function() {
       link.click();
       document.body.removeChild(link);
     }
+
+
+
+function animateCircle(circle){
+  const target = Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
+  const span = circle.querySelector('span');
+  let current = 0;
+  const stepTime = 12; // ms per increment (adjust speed)
+  // start rotating gradient while filling
+  circle.classList.add('rotating');
+
+  const timer = setInterval(()=>{
+    current++;
+    if(current > target) {
+      clearInterval(timer);
+      current = target;
+      // stop rotation after fill finishes
+      circle.classList.remove('rotating');
+    }
+    circle.style.setProperty('--percent', current);
+    span.textContent = current + '%';
+  }, stepTime);
+}
+
+/* scroll-trigger using IntersectionObserver (animates once) */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !entry.target.classList.contains('animated')){
+      entry.target.classList.add('animated');
+      animateCircle(entry.target);
+    }
+  });
+}, { threshold: 0.55 });
+
+document.querySelectorAll('.circle').forEach(c => observer.observe(c)); 
