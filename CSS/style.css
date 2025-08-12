@@ -329,7 +329,7 @@ body{
 }
 
 
-#skills-section {
+.skills-section {
     --bg: #000;
     --empty: #222;
     --size: 120px;
@@ -340,24 +340,24 @@ body{
     padding: 48px 20px;
   }
 
-  #skills-section * {
+  .skills-section * {
     box-sizing: border-box;
   }
 
-  #skills-section .skills-wrap {
+  .skills-section .skills-wrap {
     width: 100%;
     max-width: 980px;
     margin: auto;
     text-align: center;
   }
 
-  #skills-section h1 {
+  .skills-section h1 {
     margin: 0 0 28px;
     font-size: 28px;
     letter-spacing: 0.2px;
   }
 
-  #skills-section .skills-grid {
+  .skills-section .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: var(--gap);
@@ -365,7 +365,7 @@ body{
     justify-items: center;
   }
 
-  #skills-section .skill {
+  .skills-section .skill {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -373,7 +373,7 @@ body{
   }
 
   /* Circle base */
-  #skills-section .circle {
+  .skills-section .circle {
     --percent: 0;
     width: var(--size);
     height: var(--size);
@@ -385,7 +385,7 @@ body{
   }
 
   /* Gradient overlay */
-  #skills-section .circle::before {
+  .skills-section .circle::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -398,7 +398,7 @@ body{
   }
 
   /* Rotation animation */
-  #skills-section .circle.rotating::before {
+  .skills-section .circle.rotating::before {
     animation: skills-rotateGrad 1.5s linear infinite;
   }
 
@@ -408,7 +408,7 @@ body{
   }
 
   /* Inner hollow */
-  #skills-section .circle::after {
+  .skills-section .circle::after {
     content: "";
     position: absolute;
     width: calc(var(--size) - (var(--ring-thickness) * 2));
@@ -418,14 +418,14 @@ body{
     z-index: 1;
   }
 
-  #skills-section .circle span {
+  .skills-section .circle span {
     position: relative;
     z-index: 2;
     font-weight: 700;
     font-size: 18px;
   }
 
-  #skills-section .skill-name {
+  .skills-section .skill-name {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.2px;
@@ -433,11 +433,11 @@ body{
   }
 
   @media (max-width:420px){
-    #skills-section {
+    .skills-section {
       --size: 100px;
       --ring-thickness: 12px;
     }
-    #skills-section h1 {
+    .skills-section h1 {
       font-size: 22px;
     }
   }
