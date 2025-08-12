@@ -76,34 +76,32 @@ window.addEventListener('resize', function() {
       document.body.removeChild(link);
     }
 
-window.addEventListener('DOMContentLoaded', () => {
-  function animateCircle(circle){
-    const target = Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
-    const span = circle.querySelector('span');
-    let current = 0;
-    const stepTime = 12;
-    circle.classList.add('rotating');
+function animateCircle(circle){
+  const target = Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
+  const span = circle.querySelector('span');
+  let current = 0;
+  const stepTime = 12;
+  circle.classList.add('rotating');
 
-    const timer = setInterval(() => {
-      current++;
-      if(current > target) {
-        clearInterval(timer);
-        current = target;
-        circle.classList.remove('rotating');
-      }
-      circle.style.setProperty('--percent', current);
-      span.textContent = current + '%';
-    }, stepTime);
-  }
+  const timer = setInterval(()=>{
+    current++;
+    if(current > target) {
+      clearInterval(timer);
+      current = target;
+      circle.classList.remove('rotating');
+    }
+    circle.style.setProperty('--percent', current);
+    span.textContent = current + '%';
+  }, stepTime);
+}
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting && !entry.target.classList.contains('animated')){
-        entry.target.classList.add('animated');
-        animateCircle(entry.target);
-      }
-    });
-  }, { t}, { threshold: 0 });
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !entry.target.classList.contains('animated')){
+      entry.target.classList.add('animated');
+      animateCircle(entry.target);
+    }
+  });
+}, { threshold: 0.55 });
 
-  document.querySelectorAll('#skill .circle').forEach(c => observer.observe(c));
-});
+document.querySelectorAll('#skills-section .circle').forEach(c => observer.observe(c));
