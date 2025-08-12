@@ -328,116 +328,108 @@ body{
     font-weight: bold;
 }
 
-
-.skills-section {
+.skills-section{
     --bg: #000;
     --empty: #222;
     --size: 120px;
     --gap: 28px;
     --ring-thickness: 14px;
-    background: var(--bg);
-    color: #fff;
-    padding: 48px 20px;
   }
 
-  .skills-section * {
-    box-sizing: border-box;
+  .skills-section{box-sizing:border-box}
+  .skills-section{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:48px 20px;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:#fff;
   }
 
-  .skills-section .skills-wrap {
-    width: 100%;
-    max-width: 980px;
-    margin: auto;
-    text-align: center;
+  .skills-section .wrap{
+    width:100%;
+    max-width:980px;
+    text-align:center;
   }
 
-  .skills-section h1 {
-    margin: 0 0 28px;
-    font-size: 28px;
-    letter-spacing: 0.2px;
-  }
+ .skills-section h1{margin:0 0 28px;font-size:28px;letter-spacing:0.2px}
 
-  .skills-section .skills-grid {
-    display: grid;
+  .skills-grid{
+    display:grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: var(--gap);
-    align-items: center;
-    justify-items: center;
+    align-items:center;
+    justify-items:center;
   }
 
-  .skills-section .skill {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+  .skill{ width:100%; display:flex; flex-direction:column; align-items:center; gap:10px; }
 
-  /* Circle base */
-  .skills-section .circle {
-    --percent: 0;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    position: relative;
+  .circle{
+    --percent:0;
+    width:var(--size);
+    height:var(--size);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    position:relative;
+    /* placeholder mask: white region indicates progress area */
     background: conic-gradient(#fff calc(var(--percent) * 1%), var(--empty) 0);
   }
 
-  /* Gradient overlay */
-  .skills-section .circle::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
+  /* gradient layer clipped by the white progress mask */
+  .circle::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
     background: linear-gradient(90deg, #ff66c4, #6a5acd);
     -webkit-mask: conic-gradient(#000 calc(var(--percent) * 1%), transparent 0);
             mask: conic-gradient(#000 calc(var(--percent) * 1%), transparent 0);
+    /* enable transform for rotation */
     transform-origin: 50% 50%;
     z-index: 0;
   }
 
-  /* Rotation animation */
-  .skills-section .circle.rotating::before {
-    animation: skills-rotateGrad 1.5s linear infinite;
+  /* rotation animation (applied while filling) */
+  .circle.rotating::before{
+    animation: rotateGrad 1.5s linear infinite;
   }
 
-  @keyframes skills-rotateGrad {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes rotateGrad{
+    from{ transform: rotate(0deg); }
+    to  { transform: rotate(360deg); }
   }
 
-  /* Inner hollow */
-  .skills-section .circle::after {
-    content: "";
-    position: absolute;
+  /* inner hollow */
+  .circle::after{
+    content:"";
+    position:absolute;
     width: calc(var(--size) - (var(--ring-thickness) * 2));
     height: calc(var(--size) - (var(--ring-thickness) * 2));
     background: var(--bg);
-    border-radius: 50%;
-    z-index: 1;
+    border-radius:50%;
+    z-index:1;
   }
 
-  .skills-section .circle span {
-    position: relative;
-    z-index: 2;
-    font-weight: 700;
-    font-size: 18px;
+  .circle span{
+    position:relative;
+    z-index:2;
+    font-weight:700;
+    font-size:18px;
   }
 
-  .skills-section .skill-name {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.2px;
-    margin-top: 4px;
+  .skill-name{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.2px;
+    margin-top:4px;
   }
 
+  /* small screens */
   @media (max-width:420px){
-    .skills-section {
-      --size: 100px;
-      --ring-thickness: 12px;
-    }
-    .skills-section h1 {
-      font-size: 22px;
-    }
+    :root{ --size:100px; --ring-thickness:12px; }
+    h1{font-size:22px}
   }
