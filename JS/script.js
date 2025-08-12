@@ -76,6 +76,7 @@ window.addEventListener('resize', function() {
       document.body.removeChild(link);
     }
 
+/* animate a single circle from 0 -> target and mark as animated */
 function animateCircle(circle){
   const target = Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
   const span = circle.querySelector('span');
