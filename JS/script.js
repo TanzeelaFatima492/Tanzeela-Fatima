@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
         animateCircle(entry.target);
       }
     });
-  }, { threshold: 0.55 });
+  }, { t}, { threshold: 0 });
 
   document.querySelectorAll('#skill .circle').forEach(c => observer.observe(c));
 });
