@@ -104,4 +104,4 @@ const observer = new IntersectionObserver((entries)=>{
   });
 }, { threshold: 0.55 });
 
-document.querySelectorAll('#skills-section .circle').forEach(c => observer.observe(c));
+document.querySelectorAll('.skills-section .circle').forEach(c => observer.observe(c));
