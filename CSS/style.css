@@ -432,3 +432,82 @@ body{
   .skills-section { --size:100px; --ring-thickness:12px; }
   .skills-section h1{font-size:22px}
 }
+
+
+.education-section {
+  --bg: #000;
+  --accent: linear-gradient(90deg, #ff66c4, #6a5acd);
+  padding: 48px 20px;
+  min-height: 80vh;
+  background: var(--bg);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+.education-wrap {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.education-section h1 {
+  margin-bottom: 40px;
+  font-size: 28px;
+  letter-spacing: 0.3px;
+}
+
+/* Cards layout */
+.education-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+.edu-card {
+  background: #111;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 14px rgba(255, 102, 196, 0.25);
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(106, 90, 205, 0.5);
+}
+
+.edu-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edu-institute {
+  font-size: 15px;
+  margin: 0 0 4px;
+  color: #ddd;
+}
+
+.edu-year {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .education-section h1 {
+    font-size: 22px;
+  }
+  .edu-card h3 {
+    font-size: 16px;
+  }
+}
