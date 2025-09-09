@@ -114,3 +114,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Observe all circles AFTER DOM is ready
     document.querySelectorAll('.circle').forEach(c=> observer.observe(c));
 });
+
+
+/* ===== Project Filters ===== */
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    // Remove active class
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const category = button.getAttribute("data-filter");
+
+    projectCards.forEach(card => {
+      if (category === "all" || card.dataset.category.includes(category)) {
+        card.style.display = "block";
+        card.classList.add("fade-in");
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+ 
