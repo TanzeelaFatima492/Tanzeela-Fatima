@@ -42,7 +42,7 @@ It showcases my skills, education, projects, and provides an easy way to connect
 
 
 ## 🌐 Live Demo
-👉 [View Portfolio]([https://tanzeelafatima492.github.io/Tanzeela-Fatima/])  
+👉 [View Portfolio](https://tanzeelafatima492.github.io/Tanzeela-Fatima/)
 
 
 ## 📧 Contact
@@ -51,9 +51,7 @@ If you want to collaborate or hire me, feel free to reach out:
 - **Email:** codequeen765@gmail.com  
 - **GitHub:** [Fatima-progmmer](https://github.com/Fatima-progmmer)  
 - **LinkedIn:** [Tanzeela Fatima](https://www.linkedin.com/in/tanzeela-fatima-47861b2b7/)  
-- **LeetCode:** [LeetCode Profile](https://leetcode.com/your-username)  
 
 
 ⭐ Don’t forget to **star** this repo if you like my portfolio!
 
-Do you want me to also add a **step-by-step setup guide** (like how someone can clone and run your portfolio locally), or keep it simple since it’s just static HTML/CSS/JS?
