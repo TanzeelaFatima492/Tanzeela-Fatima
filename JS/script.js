@@ -138,4 +138,20 @@ filterButtons.forEach(button => {
     });
   });
 });
- 
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.querySelector(".project-grid");
+  const cards = Array.from(grid.querySelectorAll(".project-card"));
+
+  // Sort by date (newest first)
+  cards.sort((a, b) => {
+    const dateA = new Date(a.getAttribute("data-date"));
+    const dateB = new Date(b.getAttribute("data-date"));
+    return dateB - dateA; // newest first
+  });
+
+  // Re-append in sorted order
+  cards.forEach(card => grid.appendChild(card));
+});
+
