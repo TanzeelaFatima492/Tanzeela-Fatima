@@ -552,3 +552,14 @@ font-size: 16px;
   padding-top: 12px;
 }
 
+.leetcode-icon img {
+  width: 26px;
+  height: 26px;
+  filter: brightness(0) invert(1); /* Makes it white */
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.leetcode-icon img:hover {
+  filter: brightness(1) saturate(2) hue-rotate(290deg);
+  transform: scale(1.15);
+}
