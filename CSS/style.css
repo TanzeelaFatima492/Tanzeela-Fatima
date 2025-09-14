@@ -792,3 +792,80 @@ body{
   .about-title{ font-size: 28px; }
   .contact-left h2{ font-size: 1.6rem; text-align: left; }
 }
+
+
+
+/* ========================= */
+/*   RESPONSIVE DESIGN FIXES */
+/* ========================= */
+
+/* Tablet and below */
+@media (max-width: 992px){
+  /* Hero stacks vertically */
+  .hero{
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    margin-top: 100px;
+    gap: 30px;
+  }
+  .hero h1{ font-size: 36px; }
+  .hero h3{ font-size: 20px; }
+  .typing-text{ font-size: 18px; }
+
+  /* Contact section side-by-side -> stacked */
+  .contact-container{
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  .contact-container .left,
+  .contact-container .right{
+    width: 100%;
+  }
+}
+
+/* Mobile and below */
+@media (max-width: 768px){
+  /* Navbar fixes */
+  .sticky-nav-container{ padding: 0 0.75rem; }
+  .sticky-nav-menu ul li{ margin: 0.25rem 0; }
+
+  /* Hero */
+  .hero h1{ font-size: 30px; }
+  .hero h3{ font-size: 18px; }
+
+  /* About */
+  .about-section{ padding: 30px 15px; }
+  .about-title{ font-size: 28px; }
+  .about-text{ font-size: 18px; }
+
+  /* Languages */
+  .Languages-section{ padding: 30px 15px; }
+  .Languages-wrap h1{ font-size: 20px; }
+
+  /* Education cards */
+  .education-cards{ grid-template-columns: 1fr; gap: 16px; }
+
+  /* Projects */
+  .project-grid{ grid-template-columns: 1fr; }
+
+  /* Contact */
+  #contact{ padding: 20px; }
+  .contact-container{ padding: 20px; }
+}
+
+/* Small phones */
+@media (max-width: 480px){
+  .hero h1{ font-size: 24px; }
+  .hero h3{ font-size: 16px; }
+  .typing-text{ font-size: 16px; max-width: 22ch; }
+
+  .about-title{ font-size: 22px; }
+  .about-text{ font-size: 16px; }
+
+  .project-title{ font-size: 16px; }
+  .project-desc{ font-size: 13px; }
+
+  .footer-socials a{ font-size: 22px; margin: 0 8px; }
+}
