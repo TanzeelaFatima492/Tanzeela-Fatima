@@ -185,6 +185,31 @@ body{
   margin: 0 0 20px 0;
 }
 
+.hero-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;   /* adjust size */
+  height: 320px;
+  background: url("assets/shape.svg") no-repeat center/contain;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+  max-width: 280px; /* scale image */
+  border-radius: 50%; /* optional, if you want rounded */
+}
+
+
 .gradient-text{
   background: var(--nav-text-gradient);
   -webkit-background-clip: text;
