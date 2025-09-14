@@ -155,3 +155,23 @@ document.addEventListener("DOMContentLoaded", () => {
   cards.forEach(card => grid.appendChild(card));
 });
 
+//Contact me functionality
+const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popupMsg');
+    let popupTimer;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent real submission
+      popup.classList.add('show');
+      form.reset();
+
+      // Auto-hide popup after 3 seconds
+      popupTimer = setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3000);
+    });
+
+    function closePopup() {
+      popup.classList.remove('show');
+      clearTimeout(popupTimer);
+    }
