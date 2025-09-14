@@ -685,6 +685,13 @@ font-size: 16px;
 }
 
 
+.contact{
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
 .contact-container {
       background: #151515;
       width: 800px;
