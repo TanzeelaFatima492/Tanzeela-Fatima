@@ -389,30 +389,40 @@
   </div>
 </section>
          
-    <!-- Left Section -->
-    <section class="contact-section" id="contact>
-        <div class="contact-container">
-        <div class="contact-left">
-      <h2>CONTACT<br>ME</h2>
-      <div class="line"></div>
-      <p>Contact Info : codequeen765@gmail.com </p>
+    <section id="contact">
+    <div class="contact-container">
+      <!-- Left Section -->
+      <div class="contact-left">
+        <h2>CONTACT<br>ME</h2>
+        <div class="line"></div>
+        <p>Contact Info : +92 123 456 7890</p>
+      </div>
+
+      <!-- Right Section -->
+      <div class="contact-right">
+        <form name="contact" method="POST" data-netlify="true" id="contactForm">
+          <input type="hidden" name="form-name" value="contact">
+          
+          <input type="text" name="name" placeholder="NAME" required>
+          <input type="email" name="email" placeholder="EMAIL" required>
+          <input type="text" name="phone" placeholder="CONTACT NO">
+          <textarea name="message" rows="4" placeholder="MESSAGE" required></textarea>
+          
+          <div class="form-buttons">
+            <button type="reset">CANCEL</button>
+            <button type="submit">SEND</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <!-- Right Section -->
-    <div class="contact-right">
-      <form id="contactForm">
-        <input type="text" placeholder="NAME" required>
-        <input type="email" placeholder="EMAIL" required>
-        <input type="text" placeholder="CONTACT NO">
-        <textarea rows="4" placeholder="MESSAGE" required></textarea>
-        <div class="form-buttons">
-          <button type="reset">CANCEL</button>
-          <button type="submit">SEND</button>
-        </div>
-      </form>
+    <!-- Popup -->
+    <div class="popup" id="popupMsg">
+      <h3>✅ Message Sent!</h3>
+      <p>Thank you for contacting us. We'll get back to you soon.</p>
+      <button onclick="closePopup()">OK</button>
     </div>
-  </div>
-    </section>
+  </section>
         <footer class="footer">
   <div class="footer-socials">
     <a href="https://www.linkedin.com/in/tanzeela-fatima-47861b2b7/" target="_blank">
