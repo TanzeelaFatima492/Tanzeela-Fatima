@@ -1,177 +1,147 @@
 document.addEventListener('DOMContentLoaded', function () {
-        /* ===== Sticky nav (guarded) ===== */
-        const nav=document.querySelector('.sticky-nav');
-        const menuToggle=document.querySelector('.sticky-nav-toggle');
-        const menu=document.querySelector('.sticky-nav-menu');
+  /* ===== Sticky nav (guarded) ===== */
+  const nav = document.querySelector('.sticky-nav');
+  const menuToggle = document.querySelector('.sticky-nav-toggle');
+  const menu = document.querySelector('.sticky-nav-menu');
 
-        if (nav) {
-            window.addEventListener('scroll', function () {
-                    if (window.scrollY > 50) nav.classList.add('scrolled');
-                    else nav.classList.remove('scrolled');
-                });
+  if (nav) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', function () {
+      menu.classList.toggle('mobile-active');
+      const icon = menuToggle.querySelector('i');
+      if (!icon) return;
+
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          menu.classList.remove('mobile-active');
+          const icon = menuToggle.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
         }
 
-        if (menuToggle && menu) {
-            menuToggle.addEventListener('click', function () {
-                    menu.classList.toggle('mobile-active');
-                    const icon=menuToggle.querySelector('i');
-                    if ( !icon) return;
+        menuLinks.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  }
 
-                    if (icon.classList.contains('fa-bars')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    }
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768 && menu && menuToggle) {
+      menu.classList.remove('mobile-active');
+      const icon = menuToggle.querySelector('i');
+      if (icon && icon.classList.contains('fa-times')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  });
 
-                    else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
+  /* ===== Resume download (fixed path) ===== */
+  window.downloadPDF = function () {
+    const link = document.createElement('a');
+    link.href = 'assests/Resume.pdf';
+    link.download = 'Tanzeela_Fatima.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
-            const menuLinks=menu.querySelectorAll('a');
+  /* ===== Languages circles ===== */
+  function animateCircle(circle) {
+    const target = Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
+    const span = circle.querySelector('span');
+    let current = 0;
+    const stepTime = 12;
 
-            menuLinks.forEach(link=> {
-                    link.addEventListener('click', function () {
-                            if (window.innerWidth <=768) {
-                                menu.classList.remove('mobile-active');
-                                const icon=menuToggle.querySelector('i');
+    circle.classList.add('rotating');
 
-                                if (icon) {
-                                    icon.classList.remove('fa-times');
-                                    icon.classList.add('fa-bars');
-                                }
-                            }
+    const timer = setInterval(() => {
+      current++;
+      if (current >= target) {
+        clearInterval(timer);
+        current = target;
+        circle.classList.remove('rotating');
+      }
+      circle.style.setProperty('--percent', current);
+      if (span) span.textContent = current + '%';
+    }, stepTime);
+  }
 
-                            menuLinks.forEach(item=> item.classList.remove('active'));
-                            this.classList.add('active');
-                        });
-                });
-        }
-
-        window.addEventListener('resize', function () {
-                if (window.innerWidth > 768 && menu && menuToggle) {
-                    menu.classList.remove('mobile-active');
-                    const icon=menuToggle.querySelector('i');
-
-                    if (icon && icon.classList.contains('fa-times')) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            });
-
-        /* ===== Resume download (fixed path) ===== */
-        window.downloadPDF=function downloadPDF() {
-            const link=document.createElement('a');
-            link.href='assets/Resume.pdf'; // <-- fixed
-            link.download='Tanzeela_Fatima.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        ;
-
-        /* ===== Languages circles ===== */
-        function animateCircle(circle) {
-            const target=Math.max(0, Math.min(100, Number(circle.dataset.percent) || 0));
-            const span=circle.querySelector('span');
-            let current=0;
-            const stepTime=12; // ms per 1%
-
-            circle.classList.add('rotating'); // start rotating gradient
-
-            const timer=setInterval(()=> {
-                    current++;
-
-                    if (current >=target) {
-                        clearInterval(timer);
-                        current=target;
-                        circle.classList.remove('rotating'); // stop rotation at end
-                    }
-
-                    circle.style.setProperty('--percent', current);
-                    if (span) span.textContent=current + '%';
-                }
-
-                , stepTime);
-        }
-
-        // Trigger animation when each circle is ~30% visible
-        const observer=new IntersectionObserver((entries)=> {
-                entries.forEach(entry=> {
-                        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                            entry.target.classList.add('animated');
-                            animateCircle(entry.target);
-                        }
-                    });
-            }
-
-            , {
-            threshold: 0.3
-        });
-
-    // Observe all circles AFTER DOM is ready
-    document.querySelectorAll('.circle').forEach(c=> observer.observe(c));
-});
-
-
-/* ===== Project Filters ===== */
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    // Remove active class
-    filterButtons.forEach(btn => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    const category = button.getAttribute("data-filter");
-
-    projectCards.forEach(card => {
-      if (category === "all" || card.dataset.category.includes(category)) {
-        card.style.display = "block";
-        card.classList.add("fade-in");
-      } else {
-        card.style.display = "none";
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+        entry.target.classList.add('animated');
+        animateCircle(entry.target);
       }
     });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.circle').forEach(c => observer.observe(c));
+
+  /* ===== Project Filters ===== */
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const category = button.getAttribute("data-filter");
+      projectCards.forEach(card => {
+        if (category === "all" || card.dataset.category.includes(category)) {
+          card.style.display = "block";
+          card.classList.add("fade-in");
+          card.addEventListener("animationend", () => card.classList.remove("fade-in"), { once: true });
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
   });
-});
 
-
-document.addEventListener("DOMContentLoaded", () => {
+  /* ===== Project Sorting by Date ===== */
   const grid = document.querySelector(".project-grid");
-  const cards = Array.from(grid.querySelectorAll(".project-card"));
+  if (grid) {
+    const cards = Array.from(grid.querySelectorAll(".project-card"));
+    cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+    cards.forEach(card => grid.appendChild(card));
+  }
 
-  // Sort by date (newest first)
-  cards.sort((a, b) => {
-    const dateA = new Date(a.getAttribute("data-date"));
-    const dateB = new Date(b.getAttribute("data-date"));
-    return dateB - dateA; // newest first
-  });
+  /* ===== Contact form popup ===== */
+  const form = document.getElementById('contactForm');
+  const popup = document.getElementById('popupMsg');
+  let popupTimer;
 
-  // Re-append in sorted order
-  cards.forEach(card => grid.appendChild(card));
-});
-
-//Contact me functionality
-const form = document.getElementById('contactForm');
-    const popup = document.getElementById('popupMsg');
-    let popupTimer;
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // prevent real submission
+  if (form && popup) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
       popup.classList.add('show');
       form.reset();
 
-      // Auto-hide popup after 3 seconds
+      clearTimeout(popupTimer); // prevent stacking
       popupTimer = setTimeout(() => {
         popup.classList.remove('show');
       }, 3000);
     });
+  }
 
-    function closePopup() {
-      popup.classList.remove('show');
-      clearTimeout(popupTimer);
-    }
+  window.closePopup = function () {
+    popup.classList.remove('show');
+    clearTimeout(popupTimer);
+  };
+});
