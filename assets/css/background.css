@@ -1,30 +1,23 @@
-/* Background container */
+/* Floating Glow Background */
 #animated-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
     overflow: hidden;
+    z-index: -1; /* BACKGROUND ONLY */
 }
 
-/* Background circles ONLY */
 .bg-circle {
     position: absolute;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(0,255,255,0.8), transparent);
     animation: float 10s linear infinite;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 @keyframes float {
     0% { transform: translateY(100vh) scale(0.5); }
     100% { transform: translateY(-20vh) scale(1.3); }
-}
-
-/* All website content stays above background */
-body > *:not(#animated-bg) {
-    position: relative;
-    z-index: 1;
 }
