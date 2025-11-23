@@ -148,27 +148,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Create floating circles
-const bg = document.getElementById('animated-bg');
-const totalCircles = 20;
-
-for(let i = 0; i < totalCircles; i++) {
-    let c = document.createElement('div');
-    c.classList.add('bg-circle');
-
-    let size = Math.random() * 80 + 20; // 20px to 100px
-    c.style.width = size + 'px';
-    c.style.height = size + 'px';
-
-    c.style.left = Math.random() * window.innerWidth + 'px';
-    c.style.animationDuration = (Math.random() * 5 + 8) + 's'; // vertical float
-    c.style.animationDelay = Math.random() * 5 + 's'; // stagger start
-    bg.appendChild(c);
-}
-
-// Optional: Adjust circles on resize
-window.addEventListener('resize', () => {
-    document.querySelectorAll('.bg-circle').forEach(c => {
-        c.style.left = Math.random() * window.innerWidth + 'px';
-    });
-});
