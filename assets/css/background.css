@@ -1,35 +1,38 @@
-/* Full-page background container */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* Background container */
 #animated-bg {
-  position: fixed;
+  position: fixed;  /* fixed so it stays behind scrolling content */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0; /* behind all content */
   overflow: hidden;
-  background: #000; /* dark theme */
 }
 
-/* Floating circles */
-.bg-circle {
+/* Glow circle style (your existing style) */
+.circle {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,0,127,0.3), transparent 70%);
-  opacity: 0.5;
-  animation: float 12s linear infinite, drift 8s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(0,255,255,0.8), transparent);
+  animation: float 10s linear infinite;
+  opacity: 0.6;
 }
 
 @keyframes float {
   0% { transform: translateY(100vh) scale(0.5); }
-  100% { transform: translateY(-150px) scale(1.3); }
+  100% { transform: translateY(-20vh) scale(1.3); }
 }
 
-@keyframes drift {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(60px); }
-}
-
-/* Make sure your content stays above background */
+/* Ensure portfolio content is above background */
 body > *:not(#animated-bg) {
   position: relative;
   z-index: 1;
