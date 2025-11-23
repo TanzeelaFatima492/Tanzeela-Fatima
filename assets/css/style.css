@@ -269,48 +269,94 @@ body{
 }
 
 /* ===== About Section ===== */
-.about-section{
-  padding: 50px 0;
-  color: white;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+.about-section {
+  padding: 80px 20px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
 }
 
-.about-image{ position: relative; display:inline-block; }
+.gradient-text {
+  background: linear-gradient(45deg, #ff007f, #6a5acd, #00ffff, #ffbf00);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+  font-weight: bold;
+}
 
-.about-image img{
-  width: 100%;
-  height: auto; /* corrected from missing semicolon and invalid value */
-  max-width: 300px;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.about-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 50px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
   position: relative;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
-.gradient-bg{
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
   position: absolute;
-  width: 300px;
-  height: 100px;
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  border-radius: 30px;
-  top: 30%;
-  left: -20%;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
 }
 
-.about-title{
-  color: var(--accent1);
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 12px;
+.flip-card-front {
+  background-color: #111;
+  color: #00ffff;
+  font-size: 1.5rem;
 }
 
-.about-text{
-  font-size: 22px; /* fixed typo 22pxpx -> 22px */
+.flip-card-back {
+  background-color: #1a1a1a;
+  color: #fff;
+  transform: rotateY(180deg);
+  font-size: 1rem;
   line-height: 1.6;
-  color: #ccc;
 }
+
+.flip-card-front i {
+  color: #ff007f;
+  margin-bottom: 15px;
+}
+
 
 /* Highlight */
 .highlight{ color: var(--accent1); font-weight:700; }
