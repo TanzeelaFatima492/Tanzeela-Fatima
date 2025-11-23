@@ -1,24 +1,24 @@
+/* Body & html for full height, allow scroll */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+  min-height: 100%;
   background: #000;
+  overflow-x: hidden; /* allow vertical scroll */
 }
 
-/* Background container */
+/* Background container (behind all content) */
 #animated-bg {
-  position: fixed;  /* fixed so it stays behind scrolling content */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* behind all content */
+  z-index: 0; /* behind content */
   overflow: hidden;
 }
 
-/* Glow circle style (your existing style) */
+/* Your floating circles */
 .circle {
   position: absolute;
   border-radius: 50%;
@@ -32,7 +32,7 @@ html, body {
   100% { transform: translateY(-20vh) scale(1.3); }
 }
 
-/* Ensure portfolio content is above background */
+/* All other page content stays above background */
 body > *:not(#animated-bg) {
   position: relative;
   z-index: 1;
