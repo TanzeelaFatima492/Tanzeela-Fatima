@@ -273,7 +273,6 @@ body{
 
 .about-section {
   padding: 80px 20px;
-  background-color: #000;
   color: #fff;
   text-align: center;
 }
@@ -364,7 +363,6 @@ body{
 
 /* ===== Languages Section (circular progress placeholders) ===== */
 .Languages-section{
-  --bg: #000;
   --empty: #222;
   --size: 120px;
   --gap: 28px;
@@ -452,7 +450,14 @@ body{
 }
 
 /* ===== Projects ===== */
-#projects{ padding: 60px 0; text-align:center; max-width:1200px; margin:0 auto; padding-left:1rem; padding-right:1rem; }
+#projects{ 
+  padding: 60px 0; 
+  text-align:center;
+  max-width:1200px; 
+  margin:0 auto; 
+  padding-left:1rem; 
+  padding-right:1rem; 
+}
 
 .section-title{
   font-size: clamp(1.8rem, 2.5vw, 2.5rem);
@@ -553,7 +558,6 @@ body{
 
 /* ===== Education ===== */
 .education-section{
-  --bg: #000;
   --accent: linear-gradient(90deg, #ff66c4, #6a5acd);
   padding: 48px 20px;
   min-height: 80vh;
@@ -609,7 +613,6 @@ body{
 
 /* ===== Footer ===== */
 .footer{
-  background:#111;
   padding:40px 20px 20px;
   color:#fff;
   text-align:center;
