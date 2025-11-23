@@ -362,7 +362,6 @@ body{
 
 /* ===== Languages Section (circular progress placeholders) ===== */
 .Languages-section{
-  --bg: #000;
   --empty: #222;
   --size: 120px;
   --gap: 28px;
@@ -374,7 +373,6 @@ body{
   justify-content:center;
   padding:48px 20px;
   color:#fff;
-  background:var(--bg);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
