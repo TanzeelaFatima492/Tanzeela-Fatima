@@ -395,15 +395,15 @@ body{
 /* circle progress visual (requires JS to set --percent or to add inline style) */
 .circle {
   --percent: 0;
-  width: 80px;
-  height: 80px;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
-  border: 4px solid #fff; /* outline only */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background: transparent !important; /* remove fill */
+  background: transparent !important;
+  border: 4px solid var(--empty); /* outer thin border */
 }
 
 .circle::before {
@@ -411,11 +411,17 @@ body{
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 4px solid #ff66c4; /* progress color */
+  border: 4px solid transparent;
+  border-top-color: #ff66c4;
+  border-right-color: #6a5acd;
   transform: rotate(calc(var(--percent) * 3.6deg));
-  border-top-color: transparent;
-  border-right-color: transparent;
+  transition: transform 0.2s linear;
 }
+
+.circle::after {
+  display: none; /* removes inner filled circle */
+}
+
 
 .circle.rotating::before{
   animation: rotateGrad 1.5s linear infinite;
