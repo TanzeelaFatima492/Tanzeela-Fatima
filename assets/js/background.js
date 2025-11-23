@@ -1,7 +1,7 @@
 
     const bg = document.getElementById("animated-bg");
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 8; i++) {
         let c = document.createElement("div");
         let size = Math.random() * 80 + 20;
         c.classList.add("bg-circle");
